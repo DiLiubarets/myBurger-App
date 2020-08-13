@@ -3,30 +3,30 @@ let burger = require("../models/burger");
 
 let router = express.Router();
 
-router.get("/", function(req, res) {
-  burger.selectAll(function(data) {
+router.get("/", (req, res) => {
+  burger.selectAll(function (data) {
     let hdbrsObj = {
-      burgers: data
+      burgers: data,
     };
     console.log(hdbrsObj);
     res.render("index", hdbrsObj);
   });
 
-  router.post("/api/burgers", function(req, res) {
+  router.post("/api/burgers", (req, res) => {
     burger.insertOne(
       ["burger_name", "devoured"],
       [req.body.burger_name, req.body.devoured],
-      function(result) {
+      function (result) {
         // Send back the ID of new burger
         res.json({ id: result.insertId });
       }
     );
   });
-  router.put("/api/burgers/:id", function(req, res) {
+  router.put("/api/burgers/:id", (req, res) => {
     let condition = "id = " + req.params.id;
 
     console.log("condition", condition);
-    burger.updateOne({ devoured: req.body.devoured }, condition, function(
+    burger.updateOne({ devoured: req.body.devoured }, condition, function (
       result
     ) {
       if (result.changedRows === 0) {
@@ -36,11 +36,10 @@ router.get("/", function(req, res) {
       }
     });
   });
-  router.delete("/api/burgers/:id", function(req, res) {
+  router.delete("/api/burgers/:id", (req, res) => {
     let condition = "id = " + req.params.id;
-    console.log("condition", condition);
-
-    burger.deleteOne(condition, function(result) {
+  
+    burger.deleteOne(condition, (result) => {
       if (result.changedRows === 0) {
         return res.status(404).end();
       } else {
