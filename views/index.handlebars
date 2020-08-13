@@ -1,31 +1,45 @@
-<div class="card mb-3">
-    <img src="../public/assets/burger.jpg" class="card-img-top" alt="...">
+<h1 class="text-center">Hello, there! Burgers waiting for you </h1>
+<div class=" text-center">
+    <img src="../assets/img/burger.jpg" class="img-fluid rounded" id="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">Yummy! Yummy!</h5>
     </div>
 </div>
 <div class="container">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-6">
-            <h3>Burgers to Eat!</h3>
+    <h1>Order Your Burger </h1>
+    <form class="create-form">
+        <div class="input-group mb-3" style="width: 50%;">
+            <input type="text" id="newburger" name="burger" class="form-control"
+                placeholder="Enter a burger you want to eat" aria-label="Example text with button addon"
+                aria-describedby="button-addon1">
+            <button class="btn btn-outline-secondary" type="submit" id="addburger">Submit</button>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 class="text-center">Ordered Burger.</h3>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success"></li>
-                <button class="btn btn-outline-secondary" type="button" id="btnDevour">Devour</button>
+                {{#each burgers}}
+                {{#unless devoured}}
+                <li class="list-group-item list-group-item-success"> {{this.id}} - {{this.burger_name}}
+                    <button type="button" class="eatburger btn btn-outline-secondary float-right" id="eatbutton"
+                        data-id="{{this.id}}" data-newDevoured="{{devour}}">Devour</button></li>
+                {{/unless}}
+                {{/each}}
             </ul>
         </div>
-        <div class="col-6 col-md-6">
-            <h3>Devoured Burgers!</h3>
-            <ul class="list-group">
-                <li class="list-group-item list-group-item-success"></li>
-                <p id="eaten"></p>
+        <div class="col-sm-6">
+            <h3 class="text-center">Devoured Burgers.</h3>
+            <ul class="list-group list-unstyled">
+                {{#each burgers}}
+                {{#if devoured}}
+                <li class="list-group-item list-group-item-success"> {{this.id}} - {{this.burger_name}}
+                    <button type="button" class="trashburger btn btn-outline-secondary float-right" id="trashbutton"
+                        data-id="{{this.id}}" data-newDevoured="{{devour}}">Delete</button></li>
+                {{/if}}
+                {{/each}}
             </ul>
+
         </div>
     </div>
-</div>
-<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="What do you want on your burger?"
-        aria-label="Example text with button addon" aria-describedby="button-addon1">
-    <button class="btn btn-outline-secondary" type="button" id="btnSubmit">Submit</button>
-    <p class="">Enter a burger you want to eat. </p>
-    <p class=""><small class="text-muted">Click the "Submit" button</small></p>
 </div>

@@ -5,9 +5,9 @@ USE burgers_db;
 
 CREATE TABLE burgers (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  burger_name VARCHAR(30),
-  devoured BOOLEAN
+  burger_name VARCHAR(255) NOT NULL,
+  devoured BOOLEAN default false
 );
 
-INSERT INTO burgers(burger_name, devoured)
-VALUES ("Chicken burger", 0), ("Quinoa Burger with Feta", 0), ("Beefy Burgers", 0), (" Pizza Burger", 0);
+-- INSERT INTO burgers(burger_name, devoured)
+-- VALUES ("Chicken burger", 0), ("Quinoa Burger with Feta", 0), ("Beefy Burgers", 0), (" Pizza Burger", 0);
