@@ -1,11 +1,13 @@
 # Node Express Handlebars
+
 [Heroku deployed](https://warm-crag-56059.herokuapp.com)
+
 ### Overview
 
-Created a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM (yum!). 
-
+Created a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM (yum!).
 
 #### Directory structure
+
 ```
 .
 ├── config
@@ -32,7 +34,7 @@ Created a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM
 │       │   └── burger_style.css
 │       └── img
 │           └── burger.png
-│   
+│  
 │
 ├── server.js
 │
@@ -41,4 +43,3 @@ Created a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM
     └── layouts
         └── main.handlebars
 ```
-
